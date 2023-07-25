@@ -1,0 +1,1 @@
+export const M2_SERVICE_NAME = 'M1_SERVICE_NAME';

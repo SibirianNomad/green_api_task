@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    volumes:
+      - ./:/app
+    ports:
+      - ${APP_PORT}:${APP_DOCKER_PORT}
+    depends_on:
+      - rabbitmq
+    networks:
+      - project
+    env_file: .env
+
+  rabbitmq:
+    image: rabbitmq:3.10.7-alpine
+    networks:
+      - project
+
+
+networks:
+  project:
+    name: project
+    driver: bridge

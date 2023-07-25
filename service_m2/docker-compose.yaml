@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - ./:/app
+    ports:
+      - ${APP_PORT}:${APP_DOCKER_PORT}
+    networks:
+      - project
+    env_file: .env
+
+networks:
+  project:
+    external:
+      true
