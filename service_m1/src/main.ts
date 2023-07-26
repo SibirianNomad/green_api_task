@@ -3,11 +3,13 @@ import { AppModule } from './app.module';
 import { MicroserviceOptions } from '@nestjs/microservices';
 import { microservicesConfig } from './app.config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import {ValidationPipe} from "@nestjs/common";
+import { ValidationPipe } from '@nestjs/common';
+import { Logger } from 'nestjs-pino';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-    app.useGlobalPipes(new ValidationPipe());
+  const app = await NestFactory.create(AppModule, { bufferLogs: true });
+  app.useLogger(app.get(Logger));
+  app.useGlobalPipes(new ValidationPipe());
   app.setGlobalPrefix('api');
 
   const appMicroservice =

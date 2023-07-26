@@ -1,7 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsArray, IsNotEmpty } from 'class-validator';
 
-
 export class DataDto {
   @ApiProperty({
     required: true,
@@ -9,5 +8,4 @@ export class DataDto {
   @IsNotEmpty()
   @IsArray()
   array: any[];
-
 }

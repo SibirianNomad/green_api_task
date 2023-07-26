@@ -2,7 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ERoute } from './enums/route';
 import { ApiOperation } from '@nestjs/swagger';
-import {DataDto} from "./dto/data.dto";
+import { DataDto } from './dto/data.dto';
 
 @Controller()
 export class AppController {
